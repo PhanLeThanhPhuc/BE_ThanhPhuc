@@ -7,6 +7,12 @@
 		<result column="MAKH" property="maKhachHang"/>
 		<result column="TENKH" property="tenKhachHang"/>
 		<result column="DIACHI" property="diaChi"/>
+		<result column="MAIL" property="mail"/>
+		<result column="PHONE" property="phone"/>
+		<result column="IMAGE" property="image"/>
+		<result column="BIRTHDAY" property="birthday"/>
+		<result column="ISUSE" property="isuse"/>
+		<result column="ROLEID" property="roleid"/>
 	</resultMap>
 	
 	<select id = "getAllUsers" resultMap="userResultMap">
@@ -15,6 +21,52 @@
 		, us.DIACHI 
 	FROM system.f4_inv_hr_user us
 	where 1=1
+	</select>
+	
+	<select id = "getUserById" resultMap="userResultMap">
+	select us.MAKH
+		,us.TENKH
+		,us.DIACHI 
+        ,us.MAIL
+        ,us.PHONE
+        ,us.IMAGE
+        ,us.BIRTHDAY
+        ,us.ISUSE
+        ,us.ROLEID
+	FROM system.f4_inv_hr_user us
+	where 1=1
+	and us.makh = #{id}
+	</select>
+	
+	<select id = "getUserByRole" resultMap="userResultMap">
+	select us.MAKH
+		,us.TENKH
+		,us.DIACHI 
+        ,us.MAIL
+        ,us.PHONE
+        ,us.IMAGE
+        ,us.BIRTHDAY
+        ,us.ISUSE
+        ,us.ROLEID
+	FROM system.f4_inv_hr_user us
+	where 1=1
+	and us.ROLEID = #{id}
+	</select>
+	
+	<select id = "getUserByRoleUse" resultMap="userResultMap">
+	select us.MAKH
+		,us.TENKH
+		,us.DIACHI 
+        ,us.MAIL
+        ,us.PHONE
+        ,us.IMAGE
+        ,us.BIRTHDAY
+        ,us.ISUSE
+        ,us.ROLEID
+	FROM system.f4_inv_hr_user us
+	where 1=1
+	and us.ROLEID = #{id}
+    and us.isuse = 'N'
 	</select>
 </mapper>
 
