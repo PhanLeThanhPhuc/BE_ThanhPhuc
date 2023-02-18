@@ -13,7 +13,7 @@ class services {
     }
 
     saveRole = async () => {
-        let dataForm ={
+        let dataForm = {
             roleId: $$("formRole").getValues().roleId,
             roleName: $$("formRole").getValues().roleName,
             isUse: $$("formRole").getValues().isUse === 1 ? "Y" : "N",
@@ -21,14 +21,14 @@ class services {
             description: $$("formRole").getValues().description,
         };
 
-       let {data:response} = await axios.post("http://localhost:8881/api/role/saveRole", dataForm);
-      
-        if(response.Success){
+        let { data: response } = await axios.post("http://localhost:8881/api/role/saveRole", dataForm);
+
+        if (response.Success) {
             swal("Save Role!", response.Message, "success");
             this.cLearForm();
             this.onload();
         }
-        else{
+        else {
             swal("False!", response.Message, "success");
         }
     }

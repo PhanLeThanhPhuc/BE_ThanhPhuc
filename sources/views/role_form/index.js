@@ -56,6 +56,7 @@ export default class RoleForm extends JetView {
         }
 
         // thay doi lan 2
+        //code nhanh1
     }
     init() {
         service.onload();
